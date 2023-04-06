@@ -19,8 +19,12 @@ app.post("/api/v1/details", (req, res) => {
   // console.log(userDetails.length);
   const user = { id: userDetails.length + 1, name, mail, number };
   userDetails.push(user);
-  // const data = fs.writeFile(`${__dirname}/data/userDetails.json`, userDetails);
-  res.status(200).json({
+  const data = fs.writeFileSync(
+    `${__dirname}/data/userDetails.json`,
+    JSON.stringify(userDetails),
+    "utf8"
+  );
+  res.status(201).json({
     status: "Success",
     message: "User registered successfully",
     data: {
