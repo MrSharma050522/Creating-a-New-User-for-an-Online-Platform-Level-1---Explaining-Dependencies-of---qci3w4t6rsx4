@@ -14,7 +14,7 @@ app.use(express.json());
 app.post("/api/v1/details", (req, res) => {
   const { name, mail, number } = req.body;
   if (!name || !mail || !number) {
-    res.status(404).json({ message: "Invalid data" });
+    res.status(400).json({ message: "Invalid data" });
   }
   // console.log(userDetails.length);
   const user = { id: userDetails.length + 1, name, mail, number };
