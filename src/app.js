@@ -13,7 +13,7 @@ app.use(express.json());
 // Write POST endpoint for registering new user
 app.post("/api/v1/details", (req, res) => {
   const { name, mail, number } = req.body;
-  if (!name || !mail || !number) {
+  if (name.trim().length === 0 || mail.trim().length === 0) {
     res.status(400).json({ message: "Invalid data" });
   }
   // console.log(userDetails.length);
